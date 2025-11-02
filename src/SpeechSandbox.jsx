@@ -6,7 +6,6 @@ function SpeechSandbox() {
 
     let recognition;
 
-    // Este método inicializa el reconocimiento
     const initRecognition = () => {
         const SpeechRecognition =
             window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -17,7 +16,7 @@ function SpeechSandbox() {
         }
 
         recognition = new SpeechRecognition();
-        recognition.lang = "es-ES"; // puedes cambiar el idioma
+        recognition.lang = "de-DE";
         recognition.interimResults = true;
 
         recognition.onresult = (event) => {
@@ -42,13 +41,13 @@ function SpeechSandbox() {
     return (
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <h2>🎙️ Web Speech API Sandbox</h2>
-            <p>Presiona el botón y habla para ver qué pasa.</p>
+            <p>Press the button and speak to see what happens.</p>
 
             <button onClick={startListening} disabled={isListening}>
-                {isListening ? "Escuchando..." : "Comenzar"}
+                {isListening ? "Listening..." : "Start"}
             </button>
             <button onClick={stopListening} disabled={!isListening}>
-                Detener
+                Stop
             </button>
 
             <p style={{ marginTop: "1rem" }}>🗣️ <strong>{transcript}</strong></p>
