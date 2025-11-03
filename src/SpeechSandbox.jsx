@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./main-test.css"
 
 function SpeechSandbox() {
     const [isListening, setIsListening] = useState(false);
@@ -11,7 +12,7 @@ function SpeechSandbox() {
             window.SpeechRecognition || window.webkitSpeechRecognition;
 
         if (!SpeechRecognition) {
-            alert("Tu navegador no soporta la Web Speech API 😢");
+            alert("API is not supported in this browser.");
             return;
         }
 
@@ -39,18 +40,20 @@ function SpeechSandbox() {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <div className="main-container">
             <h2>🎙️ Web Speech API Sandbox</h2>
             <p>Press the button and speak to see what happens.</p>
 
-            <button onClick={startListening} disabled={isListening}>
-                {isListening ? "Listening..." : "Start"}
-            </button>
-            <button onClick={stopListening} disabled={!isListening}>
-                Stop
-            </button>
+            <div className="buttons-container">
+                <button onClick={startListening} disabled={isListening}>
+                    {isListening ? "Listening..." : "Start"}
+                </button>
+                <button onClick={stopListening} disabled={!isListening}>
+                    Stop
+                </button>
+            </div>
 
-            <p style={{ marginTop: "1rem" }}>🗣️ <strong>{transcript}</strong></p>
+            <p className="transcript" style={{ marginTop: "1rem" }}>🗣️ <strong>{transcript}</strong></p>
         </div>
     );
 }
